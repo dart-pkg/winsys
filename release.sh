@@ -14,7 +14,7 @@ cat << EOS >> CHANGELOG.md
 
 ## $version
 
-- pubspec.yaml was generated using pubspec-gen
+- $1
 EOS
 
 dos2unix pubspec.yaml
@@ -22,6 +22,8 @@ dos2unix CHANGELOG.md
 
 ./do-analyze.sh
 ./do-test.sh
+
+#exit 0
 
 tag="$version"
 git add .
