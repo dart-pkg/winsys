@@ -3,7 +3,7 @@ set -uvx
 set -e
 cwd=`pwd`
 ts=`date "+%Y.%m%d.%H%M"`
-version=$(echo $ts | sed "s/[.]0*/./g")
+version=$(pkgver)
 comment=$1
 
 echo $version
