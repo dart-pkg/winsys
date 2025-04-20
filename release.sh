@@ -8,7 +8,7 @@ comment=$1
 
 echo $version
 
-pubspec-gen "$version"
+pubspec "$version"
 #dart pub get
 
 cat << EOS >> CHANGELOG.md
