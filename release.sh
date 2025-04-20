@@ -4,6 +4,7 @@ set -e
 cwd=`pwd`
 ts=`date "+%Y.%m%d.%H%M"`
 version="${ts//.0/.}"
+comment=$1
 
 echo $version
 
@@ -14,7 +15,7 @@ cat << EOS >> CHANGELOG.md
 
 ## $version
 
-- $1
+- $comment
 EOS
 
 dos2unix pubspec.yaml
@@ -27,7 +28,7 @@ dos2unix CHANGELOG.md
 
 tag="$version"
 git add .
-git commit -m"$tag"
+git commit -m"$comment"
 git tag -a "$tag" -m"$tag"
 git push origin "$tag"
 git push origin HEAD:main
