@@ -6,6 +6,6 @@
 
 - Added version tag to GitHub repository
 
-## 2025.421.448
+## 2025.421.451
 
-- Added: command and tryCommand
+- Added: command$ and tryCommand$
