@@ -1,18 +1,14 @@
-name: winsys
-description: winsys package project
-version: 2025.420.1442
-homepage:
-repository: https://github.com/dart-pkg/winsys
-
+name: "winsys"
+description: "winsys project"
+version: "2025.421.448"
+homepage: null
+repository: " https://github.com/dart-pkg/winsys"
 environment:
-  sdk: ^3.7.2
-
+  sdk: "^3.7.2"
 dependencies:
+  dynamic_function: ^1.0.4
   ffi: ^2.1.4
-
 dev_dependencies:
-  build_runner: ^2.4.15
-  embed: ^1.4.1
   lints: ^5.1.1
-  output: ^1.0.1
+  output: ^1.0.6
   test: ^1.25.15
