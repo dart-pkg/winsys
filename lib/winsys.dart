@@ -3,6 +3,7 @@ import 'dart:core';
 import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:dynamic_function/dynamic_function.dart';
+import 'package:misc/misc.dart' as misc;
 
 final ffi.DynamicLibrary _msvcrtLib = ffi.DynamicLibrary.open('msvcrt.dll');
 
@@ -20,25 +21,27 @@ int wsystem(String $commandLine) {
   return $exitCode;
 }
 
-int command(String $cmd, List<String> $cmdArgs) {
-  String $commandLine = $cmd;
-  for (int i = 0; i < $cmdArgs.length; i++) {
-    $commandLine += ' "${$cmdArgs[i]}"';
+int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
+  String $commandLine = misc.makeCommandLine([cmd, ...cmdArgs]);
+  bool $withBash = (useBash == null) ? false : useBash;
+  if ($withBash) {
+    $commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
   }
+  //print($commandLine);
   return wsystem($commandLine);
 }
 
-void tryCommand(String $cmd, List<String> $cmdArgs) {
-  final $exitCode = command($cmd, $cmdArgs);
+void tryCommand(String cmd, List<String> cmdArgs, {bool? useBash}) {
+  final $exitCode = command(cmd, cmdArgs, useBash: useBash);
   if ($exitCode != 0) {
-    throw '${$cmd} ${$cmdArgs} returned ${$exitCode}';
+    throw '$cmd $cmdArgs returned ${$exitCode}';
   }
 }
 
 final dynamic command$ = DynamicFunction((
-    List<dynamic> $positional,
-    Map<Symbol, dynamic> $named,
-    ) {
+  List<dynamic> $positional,
+  Map<Symbol, dynamic> $named,
+) {
   if ($positional.isEmpty) {
     throw '${$positional.length} arguments supplied to command\$()';
   }
@@ -47,21 +50,25 @@ final dynamic command$ = DynamicFunction((
   for (int $i = 1; $i < $positional.length; $i++) {
     $cmdArgs.add($positional[$i]);
   }
-  checkNamed($named, ['rest']);
+  checkNamed($named, ['rest', 'useBash']);
   List<String> $rest =
-  ($named[Symbol('rest')] == null)
-      ? <String>[]
-      : $named[Symbol('rest')] as List<String>;
-  for (int $i=0; $i<$rest.length; $i++) {
+      ($named[Symbol('rest')] == null)
+          ? <String>[]
+          : $named[Symbol('rest')] as List<String>;
+  for (int $i = 0; $i < $rest.length; $i++) {
     $cmdArgs.add($rest[$i]);
   }
-  return command($cmd, $cmdArgs);
+  bool? $useBash =
+      ($named[Symbol('useBash')] == null)
+          ? null
+          : $named[Symbol('useBash')] as bool?;
+  return command($cmd, $cmdArgs, useBash: $useBash);
 });
 
 final dynamic tryCommand$ = DynamicFunction((
-    List<dynamic> $positional,
-    Map<Symbol, dynamic> $named,
-    ) {
+  List<dynamic> $positional,
+  Map<Symbol, dynamic> $named,
+) {
   if ($positional.isEmpty) {
     throw '${$positional.length} arguments supplied to command\$()';
   }
@@ -70,14 +77,18 @@ final dynamic tryCommand$ = DynamicFunction((
   for (int $i = 1; $i < $positional.length; $i++) {
     $cmdArgs.add($positional[$i]);
   }
-  checkNamed($named, ['rest']);
+  checkNamed($named, ['rest', 'useBash']);
   List<String> $rest =
-  ($named[Symbol('rest')] == null)
-      ? <String>[]
-      : $named[Symbol('rest')] as List<String>;
-  for (int $i=0; $i<$rest.length; $i++) {
+      ($named[Symbol('rest')] == null)
+          ? <String>[]
+          : $named[Symbol('rest')] as List<String>;
+  for (int $i = 0; $i < $rest.length; $i++) {
     $cmdArgs.add($rest[$i]);
   }
-  tryCommand($cmd, $cmdArgs);
+  bool? $useBash =
+      ($named[Symbol('useBash')] == null)
+          ? null
+          : $named[Symbol('useBash')] as bool?;
+  tryCommand($cmd, $cmdArgs, useBash: $useBash);
   return null;
 });

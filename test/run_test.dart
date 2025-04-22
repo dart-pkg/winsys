@@ -6,10 +6,8 @@ void main() {
   group('Run', () {
     test('run1', () {
       dump('start!');
-      //command('ping', ['-n', '10', 'www.youtube.com']);
-      //command$('ping', '-n', '10', 'www.youtube.com');
-      command$('ping', '-n', rest: ['2', 'www.youtube.com']);
-      tryCommand$('ping', '-n', rest: ['2', 'www.youtube.com']);
+      //command$('pubspec', '"1.0.0"', useBash: true);
+      tryCommand$('pubspec', '"1.0.0"', useBash: true);
     });
     test('run2', () {
       dump('this is run2');
