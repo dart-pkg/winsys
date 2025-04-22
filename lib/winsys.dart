@@ -25,7 +25,9 @@ int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
   String $commandLine = misc.makeCommandLine([cmd, ...cmdArgs]);
   bool $withBash = (useBash == null) ? false : useBash;
   if ($withBash) {
-    $commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
+    //$commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
+    $commandLine = "bash -c '${$commandLine}'";
+    print($commandLine);
   }
   //print($commandLine);
   return wsystem($commandLine);

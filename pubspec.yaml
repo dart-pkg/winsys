@@ -1,6 +1,6 @@
 name: "winsys"
 description: "winsys project"
-version: "2025.422.1854"
+version: "2025.422.2012"
 homepage: null
 repository: "https://github.com/dart-pkg/winsys"
 environment:

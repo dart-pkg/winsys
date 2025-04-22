@@ -13,3 +13,7 @@
 ## 2025.422.1854
 
 - Introduced named parameter 'useBash' to command() and tryCommand()
+
+## 2025.422.2012
+
+- Fixed a bug in command()
