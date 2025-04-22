@@ -10,6 +10,6 @@
 
 - Added: command$ and tryCommand$
 
-## 2025.422.1844
+## 2025.422.1846
 
 - Introduced named parameter 'useBash' to command() and tryCommand()
