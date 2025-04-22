@@ -4,6 +4,7 @@ import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:dynamic_function/dynamic_function.dart';
 import 'package:misc/misc.dart' as misc;
+import 'package:sys/sys.dart' as sys;
 
 final ffi.DynamicLibrary _msvcrtLib = ffi.DynamicLibrary.open('msvcrt.dll');
 
@@ -15,6 +16,7 @@ final int Function(ffi.Pointer<ffi.Utf16>) _wsystemFunc =
         .asFunction();
 
 int wsystem(String $commandLine) {
+  print('${sys.getCwd()}>${$commandLine}');
   final $strPtr = $commandLine.toNativeUtf16();
   int $exitCode = _wsystemFunc($strPtr);
   ffi.calloc.free($strPtr);
@@ -27,7 +29,7 @@ int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
   if ($withBash) {
     //$commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
     $commandLine = "bash -c '${$commandLine}'";
-    print($commandLine);
+    //print($commandLine);
   }
   //print($commandLine);
   return wsystem($commandLine);

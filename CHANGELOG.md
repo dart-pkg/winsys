@@ -17,3 +17,7 @@
 ## 2025.422.2012
 
 - Fixed a bug in command()
+
+## 2025.422.2022
+
+- Modified winsys.dart so that wsystem() prints commandline begin executed
