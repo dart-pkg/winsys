@@ -15,7 +15,12 @@ final int Function(ffi.Pointer<ffi.Utf16>) _wsystemFunc =
         )
         .asFunction();
 
-int wsystem(String $commandLine) {
+int wsystem(String $commandLine, {bool? useBash}) {
+  bool $withBash = (useBash == null) ? false : useBash;
+  if ($withBash) {
+    //$commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
+    $commandLine = "bash -c '${$commandLine}'";
+  }
   print('${sys.getCwd()}>${$commandLine}');
   final $strPtr = $commandLine.toNativeUtf16();
   int $exitCode = _wsystemFunc($strPtr);
@@ -25,14 +30,7 @@ int wsystem(String $commandLine) {
 
 int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
   String $commandLine = misc.makeCommandLine([cmd, ...cmdArgs]);
-  bool $withBash = (useBash == null) ? false : useBash;
-  if ($withBash) {
-    //$commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
-    $commandLine = "bash -c '${$commandLine}'";
-    //print($commandLine);
-  }
-  //print($commandLine);
-  return wsystem($commandLine);
+  return wsystem($commandLine, useBash: useBash);
 }
 
 void tryCommand(String cmd, List<String> cmdArgs, {bool? useBash}) {

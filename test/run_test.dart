@@ -6,17 +6,21 @@ void main() {
   group('Run', () {
     test('run1', () {
       dump('start!');
-      winsys.command$(
-        'dart',
-        'pub',
-        'deps',
-        '--no-dev',
-        '--style',
-        'list',
-        '|',
-        'sed',
-        //"'/^ .*/d'",
-        '"/^ .*/d"',
+      // winsys.command$(
+      //   'dart',
+      //   'pub',
+      //   'deps',
+      //   '--no-dev',
+      //   '--style',
+      //   'list',
+      //   '|',
+      //   'sed',
+      //   //"'/^ .*/d'",
+      //   '"/^ .*/d"',
+      //   useBash: true,
+      // );
+      winsys.wsystem(
+        'dart pub deps --no-dev --style list | sed "/^ .*/d"',
         useBash: true,
       );
     });

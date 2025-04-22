@@ -21,3 +21,7 @@
 ## 2025.422.2022
 
 - Modified winsys.dart so that wsystem() prints commandline begin executed
+
+## 2025.422.2033
+
+- Modified winsys.dart so that wsystem() accepts an optional named parameter 'useBash'
