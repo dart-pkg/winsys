@@ -1,10 +1,17 @@
 name: "winsys"
 description: "winsys project"
-version: 2025.424.316
+version: 2025.424.759
 homepage: null
 repository: "https://github.com/dart-pkg/winsys"
 environment:
   sdk: "^3.7.2"
+platforms:
+  #android:
+  #ios:
+  #linux:
+  #macos:
+  #web:
+  windows:
 dependencies:
   dynamic_function: ^1.0.4
   ffi: ^2.1.4

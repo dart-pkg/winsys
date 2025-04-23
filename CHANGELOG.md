@@ -29,3 +29,7 @@
 ## 2025.424.316
 
 - Updated package dependencies: sys 2025.424.246 (was 2025.421.2149)
+
+## 2025.424.759
+
+- This package runs only on windows platform
