@@ -25,3 +25,7 @@
 ## 2025.422.2033
 
 - Modified winsys.dart so that wsystem() accepts an optional named parameter 'useBash'
+
+## 2025.424.316
+
+- Updated package dependencies: sys 2025.424.246 (was 2025.421.2149)
