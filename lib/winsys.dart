@@ -3,7 +3,7 @@ import 'dart:core';
 import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:dynamic_function/dynamic_function.dart';
-import 'package:misc/misc.dart' as misc;
+import 'package:std/misc.dart' as misc;
 import 'package:sys/sys.dart' as sys;
 
 final ffi.DynamicLibrary _msvcrtLib = ffi.DynamicLibrary.open('msvcrt.dll');
@@ -29,7 +29,7 @@ int wsystem(String $commandLine, {bool? useBash}) {
 }
 
 int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
-  String $commandLine = misc.makeCommandLine([cmd, ...cmdArgs]);
+  String $commandLine = misc.joinCommandLine([cmd, ...cmdArgs]);
   return wsystem($commandLine, useBash: useBash);
 }
 

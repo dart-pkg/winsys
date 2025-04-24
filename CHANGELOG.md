@@ -37,3 +37,7 @@
 ## 2025.424.1515
 
 - Update package dependencies: sys 2025.424.1510 (was 2025.424.246)
+
+## 2025.424.1848
+
+- Removed dependency to misc package
