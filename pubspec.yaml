@@ -1,10 +1,10 @@
-name: "winsys"
-description: "winsys project"
+name: winsys
+description: winsys project
 version: 2025.424.759
-homepage: null
-repository: "https://github.com/dart-pkg/winsys"
+homepage:
+repository: https://github.com/dart-pkg/winsys
 environment:
-  sdk: "^3.7.2"
+  sdk: ^3.7.2
 platforms:
   #android:
   #ios:
