@@ -33,3 +33,7 @@
 ## 2025.424.759
 
 - This package runs only on windows platform
+
+## 2025.424.1515
+
+- Update package dependencies: sys 2025.424.1510 (was 2025.424.246)
