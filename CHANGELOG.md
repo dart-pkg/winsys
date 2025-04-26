@@ -41,3 +41,18 @@
 ## 2025.424.1848
 
 - Removed dependency to misc package
+
+## 2025.426.2009
+
+- Update dependencies
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.424.1848
++version: 2025.426.2009
+-  std: ^2025.424.1835
+-  sys: ^2025.424.1611
++  std: ^2025.426.1637
++  sys: ^2025.426.1725
+```
