@@ -56,3 +56,22 @@
 +  std: ^2025.426.1637
 +  sys: ^2025.426.1725
 ```
+
+## 2025.427.1352
+
+- Update dependencies
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.426.2009
++version: 2025.427.1352
+-  dynamic_function: ^1.0.4
++  dynamic_function: ^2025.427.1341
+-  std: ^2025.426.1637
+-  sys: ^2025.426.1725
++  std: ^2025.427.52
++  sys: ^2025.426.2256
+-  output: ^1.0.7
++  output: ^2025.426.2027
+```
