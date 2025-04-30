@@ -1,10 +1,9 @@
 import 'dart:core';
-//import 'dart:io' as io;
 import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:dynamic_function/dynamic_function.dart';
-import 'package:std/misc.dart' as misc;
-import 'package:sys/sys.dart' as sys;
+import 'package:std/misc.dart' as std_misc;
+import 'package:sys/sys.dart' as sys_sys;
 
 final ffi.DynamicLibrary _msvcrtLib = ffi.DynamicLibrary.open('msvcrt.dll');
 
@@ -18,10 +17,9 @@ final int Function(ffi.Pointer<ffi.Utf16>) _wsystemFunc =
 int wsystem(String $commandLine, {bool? useBash}) {
   bool $withBash = (useBash == null) ? false : useBash;
   if ($withBash) {
-    //$commandLine = 'bash -c "${$commandLine.replaceAll('"', '"""')}"';
     $commandLine = "bash -c '${$commandLine}'";
   }
-  print('${sys.getCwd()}>${$commandLine}');
+  print('${sys_sys.getCwd()}>${$commandLine}');
   final $strPtr = $commandLine.toNativeUtf16();
   int $exitCode = _wsystemFunc($strPtr);
   ffi.calloc.free($strPtr);
@@ -29,7 +27,7 @@ int wsystem(String $commandLine, {bool? useBash}) {
 }
 
 int command(String cmd, List<String> cmdArgs, {bool? useBash}) {
-  String $commandLine = misc.joinCommandLine([cmd, ...cmdArgs]);
+  String $commandLine = std_misc.joinCommandLine([cmd, ...cmdArgs]);
   return wsystem($commandLine, useBash: useBash);
 }
 
