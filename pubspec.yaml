@@ -1,6 +1,6 @@
 name: winsys
 description: winsys project
-version: 2025.430.1927
+version: 2025.502.926
 homepage: 
 repository: https://github.com/dart-pkg/winsys
 environment:
@@ -15,8 +15,8 @@ platforms:
 dependencies:
   dynamic_function: ^2025.427.1341
   ffi: ^2.1.4
-  std: ^2025.430.1833
-  sys: ^2025.430.1853
+  std: ^2025.501.843
+  sys: ^2025.501.850
 dev_dependencies:
   lints: ^5.1.1
   output: ^2025.430.1731
