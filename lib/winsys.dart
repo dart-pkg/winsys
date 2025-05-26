@@ -3,7 +3,7 @@ import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:dynamic_function/dynamic_function.dart';
 import 'package:std/misc.dart' as std_misc;
-import 'package:sys/sys.dart' as sys_sys;
+import 'package:std/std.dart' as std_std;
 
 final ffi.DynamicLibrary _msvcrtLib = ffi.DynamicLibrary.open('msvcrt.dll');
 
@@ -19,7 +19,7 @@ int wsystem(String $commandLine, {bool? useBash}) {
   if ($withBash) {
     $commandLine = "bash -c '${$commandLine}'";
   }
-  print('${sys_sys.getCwd()}>${$commandLine}');
+  print('${std_std.getCwd()}>${$commandLine}');
   final $strPtr = $commandLine.toNativeUtf16();
   int $exitCode = _wsystemFunc($strPtr);
   ffi.calloc.free($strPtr);
