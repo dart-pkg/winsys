@@ -150,3 +150,22 @@
 -  output: ^2025.430.1731
 +  output: ^2025.502.1958
 ```
+
+## 2025.526.1913
+
+- Update dependencies
+
+```
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+-version: 2025.503.20
++version: 2025.526.1913
+-  std: ^2025.502.2358
+-  sys: ^2025.503.6
++  std: ^2025.526.1751
++  sys: ^2025.526.1802
+-  lints: ^5.1.1
++  lints: ^6.0.0
+-  test: ^1.25.15
++  test: ^1.26.2
+```
